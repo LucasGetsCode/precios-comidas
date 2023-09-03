@@ -19,11 +19,7 @@ Builder.load_file("Interfaz2.kv")
 
 class ButtonRounded(Button):            
     def cosa(self, widget):
-        # widget.background_color = (0.66, .78, .9, 1)
-        # widget.background_color = (0,0,0, 1)
-        # widget.canvas.color = (0.66, .78, .9, 1)
-        with widget.canvas:
-            Color(0.66, .78, .9)
+        widget.background_color = (0.66, .78, .9, 1)
         print("Color cambiado")
         
         

@@ -1,8 +1,14 @@
+#:import hex kivy.utils.get_color_from_hex
+
 <ButtonRounded>:
     font_size: 20
-    background_color: 0, 0, 0, 0
+    # background_color: 0, 0, 0, 0
     background_normal: ""
-    on_press: root.cosa(self)
+    background_down: ""
+    # on_press: root.cosa(self)
+    # on_press: self.background_color = 0.66, .78, .9, 1 
+    on_press: self.background_color = hex("#BED2E6")
+    on_release: self.background_color = 0,0,0,0
     canvas.before:
         # Color:
         #     rgba: .66, .78, .9, 1
