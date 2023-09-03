@@ -1,0 +1,137 @@
+<ButtonRounded>:
+    font_size: 20
+    background_color: 0, 0, 0, 0
+    background_normal: ""
+    on_press: root.cosa(self)
+    canvas.before:
+        # Color:
+        #     rgba: .66, .78, .9, 1
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [55]  #---- This rounds the corners --- #
+
+<Hola>
+    FloatLayout:
+        RelativeLayout: # Info principal
+            canvas.before:
+                Color:
+                    rgba: .6, .6, .6, 1
+                Rectangle:
+                    pos: (0,0)
+                    size: self.size
+            pos: 20, 540
+            size_hint: None, None
+            width: 500
+            height: 50
+            # Label:
+            #     text: "Nombre de comida"
+            #     pos_hint: {'x':0, 'y':0}
+            #     # size: self.texture_size
+            #     size_hint: (.5,.5)
+            #     font_size: '30sp'
+            #     valign: "middle"
+            TextInput:
+                text: "Nombre de comida"
+                id: comida
+                pos_hint: {'x':0, 'y':0}
+                # size: self.texture_size
+                size_hint: (.9,1)
+                font_size: '20sp'
+                valign: "middle"
+            Button:
+                pos_hint: {'x':.90, 'y':0}
+                size_hint: .05, .5
+                on_press: root.guardar(porciones, comida)
+                on_press: root.pepe()
+                Image:
+                    source: "Checkmark.png"
+                    size: self.parent.size
+                    pos: self.parent.pos
+                    allow_stretch: True
+            Button:
+                pos_hint: {'x':.90, 'y':0.5}
+                size_hint: .05, .5
+                on_press: root.borrar()
+                Image:
+                    source: "Cross.png"
+                    size: self.parent.size
+                    pos: self.parent.pos
+                    allow_stretch: True 
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                orientation: "vertical"
+                size_hint: .05, 1
+                pos_hint: {'right':1, 'y':0}
+                ButtonRounded:
+                    text: "+"
+                    color: "black"
+                    background_normal: ""
+                    on_press: root.subir(porciones)
+                Label:
+                    id: porciones
+                    text: "5"
+                    color: "black"
+                    # size_hint: 1, 1.4
+                ButtonRounded:
+                    text: "-"
+                    color: "black"
+                    background_normal: ""
+                    on_press: root.bajar(porciones)
+            # Label:
+            #     text: "Nombre de comida"
+            #     pos_hint: {'x':0, 'y':0}
+            #     size: self.texture_size
+            #     size_hint: (.5,.5)
+            #     text_size: self.size
+                # size_hint: None, None
+                # width: 1000
+                # heigth: 50
+                # halign: ''
+            Label:
+                text: "(0,1)"
+                pos_hint: {'x':0, 'y':1}
+                size_hint: None, None
+                width: 50
+                heigth: 50
+                size: self.texture_size
+                valign: "bottom"
+            Label:
+                text: "(1,0)"
+                pos_hint: {'x':1, 'y':0}
+                size_hint: None, None
+                width: 50
+                heigth: 50
+                size: self.texture_size
+                valign: "bottom"
+            Label:
+                text: "(0.5, 0.5)"
+                pos_hint: {'x':0.5, 'y':0.5}
+                size_hint: None, None
+                width: 50
+                heigth: 50
+                size: self.texture_size
+                valign: "bottom"
+
+        BoxLayout: # Lista de opciones y precios
+            orientation: 'vertical'
+            spacing: 10
+            size_hint: .30, .96
+            pos_hint: {'x':.68, 'y':.02}
+            Button:
+                text: "Actualizar precios"
+                size_hint: 1, .1
+                on_press: root.actualizar_precios()
+            Button:
+                text: "Actualizar precios"
+        Label:
+            text: "(200,400)"
+            pos: 200, 400
+            size_hint: None, None
+            width: 50
+            heigth: 50
