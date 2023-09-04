@@ -10,6 +10,7 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.config import Config
 from kivy.metrics import MetricsBase
+from kivy.core.window import Window
 
 Config.set('graphics', 'resizable', False)
 Config.set('graphics', 'width', '800')
@@ -17,9 +18,29 @@ Config.set('graphics', 'height', '600')
 
 Builder.load_file("Interfaz2.kv")
 
-class ButtonRounded(Button):            
+        
+
+
+class ButtonRounded(Button):     
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        Window.bind(mouse_pos=self.on_mouseover)
+        
+    def tocando(self, x, y):
+        pos = self.to_window(*self.pos)
+        size = self.size
+        eje_x = x >= pos[0] and x <= pos[0] + size[0]
+        eje_y = y >= pos[1] and y <= pos[1] + size[1]
+        return (eje_x and eje_y)
+        
+    def on_mouseover(self, window, pos):
+        if self.tocando(*pos):
+            self.background_color = (0.66, .78, .9, 1)
+        else:
+            self.background_color = (0,0,0,0)
+            
     def cosa(self, widget):
-        widget.background_color = (0.66, .78, .9, 1)
+        # widget.background_color = (0.66, .78, .9, 1)
         print("Color cambiado")
         
         
